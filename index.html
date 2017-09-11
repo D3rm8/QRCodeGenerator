@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate QR Code</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="left-column">
+            <label for="address">Website (URL)</label>
+            <input type="text" id="address" placeholder="www.example.com" required  
+                v-model="address"
+                @keyup.enter="getQRCode"
+            >
+            <button class="generateQR-button" @click="getQRCode">Get QR Code</button>
+        </div>
+        <div class="right-column">
+            <img v-show="!image" src="assets/example-qr-code.png">
+
+            <h1 v-show="image">Here's Your QR Code!</h1>
+            <img v-show="image" id="qrcode_image" :src=image>
+            <a v-show="image" :href=image download>
+                <button class="downloadQR-button">
+                    <i class="fa fa-download" aria-hidden="true"> </i> Download QR Code
+                </button>
+            </a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
